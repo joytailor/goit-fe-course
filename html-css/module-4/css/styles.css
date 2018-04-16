@@ -1,0 +1,116 @@
+/* * {outline: brown 2px solid;} */
+body{font-family:'Roboto', sans-serif;
+     color:rgb(85, 82, 82)}
+#logo{font-size: 30px;
+      line-height: 32px;
+    font-weight: 300px;
+    text-transform: uppercase;}
+#logo::first-letter{color: rgb(41, 192, 163);
+    font-weight:900;}
+.navigation{list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 11px;}
+.navigation a{color: rgb(15,1,1);
+text-transform: uppercase;
+text-decoration: none;}
+.navigation a:hover{color: rgb(41, 192, 163)}
+.products{text-transform: uppercase;
+font-weight: 900;}
+h2{font-size: 48px;
+line-height: 32px;
+text-transform: uppercase;}
+h2::after{ content: "";
+    display: block;
+    background-color: rgb(41, 202, 162);
+    width: 164px;
+    height: 7px;
+    margin: auto;
+margin-top: 39px;
+margin-bottom: 92px;}
+.news-block{font-family: 'Open Sans', sans-serif;}
+.article-head{font-size: 18px;
+line-height: 26px;
+font-weight: 600;}
+.article-head::after{content: "";
+    display: inline-block;
+background-color: rgb(41, 202, 162);
+width: 136px;
+height: 3px;}
+.article-text{font-size: 14px;
+line-height: 26px;}
+.button{font-size: 16px;
+line-height: 26px;}
+#logo{
+padding: 0;
+margin: 0;
+float: left;}
+nav{width:465px;
+padding: 0;
+margin: 0;
+float: right;}
+.navigation{display:inline-block;
+width:465px;
+margin:0;
+padding:0;}
+.navigation li{float: left;
+margin-right:20px;}
+.clearfix::after{display: table;
+content: "";
+clear: both;}
+header{padding:33px;}
+main{padding-top:79px;}
+h2{margin:auto;
+padding:0;
+display: block;
+text-align: center;}
+img {display: block;
+margin: 0;
+padding: 0;}
+.products{margin:auto;
+    height:787px;
+    padding-left: 119px;
+padding-right: 119px;}
+.product-item{ width: 255px;
+height:322px;
+float: left;
+margin-right: 30px;}
+div:nth-child(4){margin:0;}
+div:nth-child(8){margin:0;}
+.item-name {float: left;
+    width: 201px;
+    height: 40px;
+    background-color:rgb(50, 50, 50);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 13px;
+    box-sizing: border-box;
+    text-decoration: none;}
+.price{ float:right;
+    width: 54px;
+    height: 40px;
+    margin:0;
+    padding:13px;
+    box-sizing: border-box;
+    background-color: rgb(140, 140, 140);
+    color: rgb(255, 255, 255);
+text-decoration: none;}
+.product-item:hover .item-name{background-color: rgb(26, 188, 156);}
+.product-item:hover .price{background-color: rgb(127, 217, 199);}
+.news-item{height: 510px;
+width: 350px;
+float: left;
+margin-right: 30px;}
+article:nth-child(3){margin:0;}
+.news-block{padding-right: 119px;
+padding-left: 119px;}
+.button{ display: block;
+width: 159px;
+height: 51px;
+background-color: rgb(78, 198, 171);
+color: rgb(225, 225, 225);
+box-sizing: border-box;
+text-align: center;
+padding-top: 20px;
+border-radius: 2px;}
