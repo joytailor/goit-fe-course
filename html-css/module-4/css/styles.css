@@ -29,7 +29,7 @@ h2::after{ content: "";
     margin: auto;
 margin-top: 39px;
 margin-bottom: 92px;}
-.news-block{font-family: 'Open Sans', sans-serif;}
+.news-item {font-family: 'Open Sans', sans-serif;}
 .article-head{font-size: 18px;
 line-height: 26px;
 font-weight: 600;}
@@ -69,15 +69,15 @@ img {display: block;
 margin: 0;
 padding: 0;}
 .products{margin:auto;
-    height:787px;
     padding-left: 119px;
 padding-right: 119px;}
 .product-item{ width: 255px;
 height:322px;
 float: left;
 margin-right: 30px;}
-div:nth-child(4){margin:0;}
-div:nth-child(8){margin:0;}
+.product-item:nth-child(5){margin:0;}
+.product-item:nth-child(9){margin:0;}
+.product-item:nth-child(-n+5){margin-bottom: 30px;}
 .item-name {float: left;
     width: 201px;
     height: 40px;
@@ -95,9 +95,10 @@ div:nth-child(8){margin:0;}
     box-sizing: border-box;
     background-color: rgb(140, 140, 140);
     color: rgb(255, 255, 255);
-text-decoration: none;}
+    text-decoration: none;}
 .product-item:hover .item-name{background-color: rgb(26, 188, 156);}
 .product-item:hover .price{background-color: rgb(127, 217, 199);}
+.news-block{padding-top:113px;}
 .news-item{height: 510px;
 width: 350px;
 float: left;
@@ -111,6 +112,6 @@ height: 51px;
 background-color: rgb(78, 198, 171);
 color: rgb(225, 225, 225);
 box-sizing: border-box;
-text-align: center;
-padding-top: 20px;
+padding-left: 38px;
+padding-top: 15px;
 border-radius: 2px;}
