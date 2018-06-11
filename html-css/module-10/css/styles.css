@@ -17,20 +17,17 @@ body{
     line-height:17px;
 }
 .page-header{
-    background-image: url('../images/bg-min.png');
+    background-image: -webkit-gradient-(linear, left bottom, left top, from(rgba(252, 227, 138, 0.9)), to(rgba(243, 129, 129, 0.9))), url(../images/bg-min.png);
+    background-image: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%), url(../images/bg-min.png);
     background-size: cover;
     background-position:center;
+    background-repeat: no-repeat;
     text-align: center;
     color:var(--white);
     min-height:1000px;
     padding-top:21px;
 }
-.page-header::after{
-    content: "";
-    width:100%;
-    height:100%;
-    background-image: linear-gradient(rgba(252,227,138,0.9),rgb(243,129,129,0.9));
-}
+
 .page-nav{
     display:flex;
 align-items:center;
