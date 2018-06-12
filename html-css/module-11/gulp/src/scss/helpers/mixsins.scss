@@ -1,0 +1,15 @@
+
+@mixin center-flex($type:'all') {
+    display:flex;
+    @if $type== 'all'{
+        justify-content:center;
+        align-items: center;
+    } @else if $type== 'hor'{
+     justify-content: center;
+    } @else if $type== 'ver'{
+        align-items: center
+    } @else if $type== 'space-bet'{
+        justify-content: space-between;
+        align-items:center;
+    }
+}

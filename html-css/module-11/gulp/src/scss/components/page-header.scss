@@ -1,0 +1,25 @@
+.page-header{
+    background-image: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%), url(../../img/bg-min.png);
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: $white;
+    min-height:1000px;
+    padding-top:21px;
+}
+.page-header__title--small{
+    font-size:72px;
+    line-height:86px;
+    padding-bottom:41px;
+}
+.page-header__title--large{
+    font-size:150px;
+    line-height:140px;
+    max-width:820px;
+    padding-bottom:131px;
+}
+.page-header__button{
+    width:160px;
+    border: 3px solid var(--white);
+}

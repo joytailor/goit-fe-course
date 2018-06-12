@@ -1,0 +1,42 @@
+.page-footer{
+    @include center-flex('space-bet');
+    margin-top:63px;
+    max-width: 1220px;
+    margin: 0 auto;
+    border-top: 1px solid $grey;
+}
+.page-footer__info{
+    color:$black;
+}
+.page-footer__info--spec-word{
+    color:$peach;
+}
+.page-footer__button{
+    color:$white;
+    width:150px;
+    background-color:$aqua;
+    color:rgb(255,255,255);
+    padding-top:13px;
+    border: 0;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.page-footer__input{
+    margin-left:auto;
+    width:230px;
+    height:40px;
+    box-sizing:border-box;
+    border: 1px solid var$grey;
+    border-right: 1px solid $white;
+    margin-top:5px;
+    margin-bottom:5px;
+    box-sizing:border-box;
+    &::placeholder{
+        font-family:$additional-font-stack;
+        font-weight: 300;
+        font-size:15px;
+        font-style:italic;
+        line-height:24px;
+        color:$grey;
+    }
+}

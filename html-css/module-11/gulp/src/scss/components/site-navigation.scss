@@ -1,0 +1,36 @@
+.site-navigation{
+    @include center-flex('space-bet');
+    @extend %list;
+min-width:490px;
+}
+.site-navigation__link{
+    @extend %link;
+    text-transform: uppercase;
+    font-weight:400;
+    transition-property: color;
+    transition-duration: 200ms;
+    position: relative;
+    color:$white;
+    &::after{
+        content: "";
+        visibility: hidden;
+        background-color:$yellow;
+        width: 50px;
+        height: 3px;
+        margin: auto;
+        margin-top: 9px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -25px;
+        margin: 0 auto;
+        transition: .2s linear;
+    }
+    &:hover{
+        color:$yellow;
+    &::after{
+            visibility: visible;
+            transform: translateY(-10px);
+        }
+    }
+}

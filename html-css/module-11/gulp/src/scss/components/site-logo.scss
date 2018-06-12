@@ -1,0 +1,7 @@
+.site-logo{
+    @extend %link;
+    font-weight: 700;
+    font-size:30px;
+    line-height:36px;
+    color:$white;
+}

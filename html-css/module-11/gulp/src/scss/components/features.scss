@@ -1,0 +1,31 @@
+.features__list{
+    @extend %list;
+    padding-top:64px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+.features__item{
+    max-width:280px;
+    position:relative;
+    &:not(:nth-last-child(-n+3)){
+        margin-bottom:97px;
+    } 
+}
+.features__item-title{
+    text-transform: uppercase;
+    color:$black;
+}
+.features__item-text{
+    font-family: $additional-font-stack;
+    font-size:15px;
+    line-height:24px;
+    color:$grey;
+    &:not(:nth-child(3n)){
+        margin-right:100px;
+    }
+}
+.features__item--icon{
+position: absolute;
+transform:translate(-175%, 50%);
+}

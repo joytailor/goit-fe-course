@@ -1,0 +1,34 @@
+.section{
+    max-width:1220px;
+    padding-top:44px;
+    margin: 0 auto;
+}
+.section__title--small{
+    font-size:24px;
+    line-height:29px; 
+    color:var(--black);
+    margin-bottom:18px;
+}
+.section__title--large{
+    font-size:30px;
+    line-height:36px; 
+    color:$black;
+    &::after{content:"";
+        display:block;
+        background-color:$peach;
+        width:60px;
+        height:3px;
+        margin:auto;
+        margin-top:39px;}
+}
+.section__description{
+    text-align:center;
+    max-width:980px;
+    margin:auto;
+    color:$grey;
+    font-family: $additional-font-stack;
+    font-size:15px;
+    line-height: 24px;
+    padding-bottom:90px;
+    padding-top:41px;
+}
