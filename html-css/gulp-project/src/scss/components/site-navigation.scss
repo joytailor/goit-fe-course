@@ -1,0 +1,44 @@
+.site-navigation__item{
+
+    &::before{
+        @include pseudo;
+        margin-right:4px;
+        vertical-align: middle;
+    }
+   
+&--icon-human{
+    &::before{
+        background-image: url('../img/icons/icon-human.png');
+    }
+}
+    &--icon-box{
+        &::before{
+            background-image: url('../img/icons/icon-box.png');
+        }
+        &::after{
+            vertical-align: top;
+            @include pseudo($display:inline-block, $content: '',$width:9px, $height:5px);
+            background-image: url('../img/icons/icon-drop.png');
+            margin-left:3px;
+        }
+    }
+    &--icon-calculator{
+        &::before{
+            background-image: url('../img/icons/icon-calculator.png');
+        }
+    }
+    &--icon-exit{
+        &::before{
+            background-image: url('../img/icons/icon-exit.png');
+        }
+    }
+}
+
+    
+.site-navigation__link{
+    color: $secondary-text-color;
+    
+    &:hover{
+        color: $secondary-text-color;
+    }
+}

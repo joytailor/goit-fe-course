@@ -1,0 +1,23 @@
+
+@mixin generate-pseudo-icons($baseclass, $list, $path, $ext){
+    @each $icon in $list{
+        .#{$baseclass}#{$icon}::before{
+            background-image: url(#{$path}#{$icon}.#{$ext});
+        }
+    }
+}
+
+@mixin text($font:14px, $line:17px, $weight:400){
+    font-size:$font;
+    line-height:$line;
+    font-weight:$weight;
+}
+@mixin pseudo($display:inline-block, $content:'', $width:14px, $height:14px){
+    display:$display;
+    content:$content;
+    width:$width;
+    height:$height;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

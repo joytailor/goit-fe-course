@@ -1,0 +1,8 @@
+
+.row__item{
+    &--desc{
+        text-transform: uppercase;
+        @include text($font:12px, $line:14px, $weight:400px);
+        color:$secondary-text-color;
+    }
+}

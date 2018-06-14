@@ -1,0 +1,33 @@
+.register{
+    background-color: $bg-color;
+    box-shadow: inset 1px 1px 1px 1px rgb(235, 236, 240);
+    margin: 0 auto;
+}
+.register__name{
+    margin-left:72px;
+    position: relative;
+    &::before{
+        position: absolute;
+        top:7px;
+        left:-45px;
+        @include pseudo($display:inline-block, $content:'', $width:27px, $height:27px);
+        background-image: url('../img/icons/arrow-left-icon.png');
+        
+    }
+}
+.register__name{
+    @include text($font:18px, $line:22px, $weight:700);
+    color:$main-text-color;
+    }
+    .register__name--code{
+        @include text($font:14px, $line:17px, $weight:300);
+        color:$secondary-text-color;
+    }
+.register__info{
+    text-align: right;
+    @include text($font:12px, $line:18px, $weight:400);
+    color:$main-text-color;
+    &--act{
+        color:$secondary-text-color;
+    }
+}

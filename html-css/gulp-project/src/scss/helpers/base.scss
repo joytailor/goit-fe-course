@@ -1,0 +1,10 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  @include text;
+}
+ul{
+  @extend %list;
+}
+a{
+  @extend %link;
+}
