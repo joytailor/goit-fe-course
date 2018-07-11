@@ -8,10 +8,15 @@ const checkIfLoginExists = function(logins,login){
     return logins.includes(login)
     };
 const addLogin = function(logins,login){
-if(checkLoginValidity = false){ break;
-console.log('Ошибка! Логин должен быть от 4 до 16 символов');
-} else if(checkIfLoginExists = false){
-    login.push(logins)
-    console.log('Логин успешно добавлен!');
-} else {console.log('Такой логин уже используется!');}
+if(!checkLoginValidity(login)){return alert('Ошибка! Логин должен быть от 4 до 16 символов');
+} else if(!checkIfLoginExists(logins,login)){
+    logins.push(login)
+    alert('Логин успешно добавлен!');
+    return logins;
+} else {alert('Такой логин уже используется!');
+return logins;
 }
+
+}
+
+addLogin(logins,login);
