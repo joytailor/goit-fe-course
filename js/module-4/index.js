@@ -14,7 +14,7 @@ const products = {
 };
 function Cashier (name = "cashier", productsDatabase, totalPrice = 0, customerMoney = 0, changeAmount = 0){
   this.name = name;
-  this.productsDatabase = products;
+  this.productsDatabase[key] = products;
   this.totalPrice = totalPrice;
   this.customerMoney = customerMoney;
   this.changeAmount = changeAmount;
@@ -23,7 +23,7 @@ function Cashier (name = "cashier", productsDatabase, totalPrice = 0, customerMo
   this.onError = function(){console.log(`Очень жаль, вам не хватает денег на покупку`)};
   this.countTotalPrice = function(order){
     for(const key in order){
-      this.totalPrice += (order[key]*products[key]);
+      this.totalPrice += (order[key]*this.productsDatabase[key]);
     }
     return totalPrice;
   }
@@ -33,7 +33,7 @@ function Cashier (name = "cashier", productsDatabase, totalPrice = 0, customerMo
   }
   this.countChange = function(){
     if(this.customerMoney > this.totalPrice){
-     this.changeAmount = this.totalPrice - this.customerMoney;
+     this.changeAmount = this.customerMoney - this.totalPrice;
      return this.changeAmount;
     } else {return null;}
   }
