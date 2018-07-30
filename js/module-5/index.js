@@ -111,7 +111,7 @@ console.log(getAllNames(users));
 /**
 * Получить массив объектов пользователей по цвету глаз (поле eyeColor)
 */
-const getUsersByEyeColor = (arr, color) => arr.filter(user => {if (user.eyeColor === color) return arr;});
+const getUsersByEyeColor = (arr, color) => arr.filter(user => user.eyeColor === color);
 
 console.log(getUsersByEyeColor(users, 'blue')); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
@@ -119,7 +119,7 @@ console.log(getUsersByEyeColor(users, 'blue')); // [объект Moore Hensley, 
 /**
 * Получить массив имен пользователей по полу (поле gender)
 */
-const getUsersByGender = (arr, gender) => arr.filter(user =>{if (user.gender === gender) return arr});
+const getUsersByGender = (arr, gender) => arr.filter(user => user.gender === gender);
 
 console.log(getUsersByGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
@@ -135,7 +135,7 @@ console.log(getInactiveUsers(users)); // [объект Moore Hensley, объек
 /**
 * Получить пользоваля (не массив) по email (поле email, он уникальный)
 */
-const getUserByEmail = (arr, email) => arr.find(user => { if(user.email === email) return arr[user]});
+const getUserByEmail = (arr, email) => arr.find(user => user.email === email);
 
 console.log(getUserByEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
 console.log(getUserByEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
@@ -155,7 +155,7 @@ console.log(getUsersWithAge(users, 30, 40));
 /**
 * Получить общую сумму баланса (поле balance) всех пользователей
 */
-const getTotalBalance = (arr, acc) => {user => {return Object.keys(user).reduce((acc,balance) => {return acc + user.balance;}, 0)}}
+const getTotalBalance = (arr) => arr.reduce((acc, user) => acc + user.balance, 0)
 
 console.log(getTotalBalance(users)); // 20916
                               
@@ -163,7 +163,7 @@ console.log(getTotalBalance(users)); // 20916
 /**
 * Массив имен всех пользователей у которых есть друг с указанным именем
 */
-const getUsersByFriend = (arr, name) => 
+const getUsersByFriend = (arr, name) => arr.map(user => user.friends).filter(friend => friend === name);
 
 console.log(getUsersByFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
-console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
+console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony']
