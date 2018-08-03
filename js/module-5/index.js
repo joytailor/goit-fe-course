@@ -163,7 +163,7 @@ console.log(getTotalBalance(users)); // 20916
 /**
 * Массив имен всех пользователей у которых есть друг с указанным именем
 */
-const getUsersByFriend = (arr, name) => arr.map(user => user.friends).filter(friend => friend === name);
+const getUsersByFriend = (arr, name) => arr.filter(user => user.friends.includes(name)).map(filteredUser =>filteredUser.name);
 
 console.log(getUsersByFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
 console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony']
