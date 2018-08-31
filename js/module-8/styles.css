@@ -1,0 +1,24 @@
+.image-gallery{
+  display:flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 1300px;
+  max-height: auto;
+}
+
+.fullview{
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.preview{
+  display: flex;
+  max-width: 90%;
+  max-height: 20%;
+  list-style: none;
+  justify-content: space-between;
+}
+.preview > li{
+  width: 15%;
+  height: auto;
+}
