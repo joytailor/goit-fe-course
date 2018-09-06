@@ -63,7 +63,7 @@ const galleryItems = [
 ];
 
 
-const gallery = document.querySelector('.js-image-gallery');
+const gallery = document.querySelector('body');
 
 function createFullview(galleryItems){
   const fullviewItem = document.createElement('div');
@@ -93,6 +93,9 @@ function createPreview (galleryItems){
   })
   return gallery.append(list);
 }
+createFullview(galleryItems);
+createPreview(galleryItems);
+
 
 list.addEventListener('click', handleImgClick);
 
@@ -102,3 +105,4 @@ function handleImgClick(event){
      fullviewImage.src = previewImage.dataset;
   }
 }
+
