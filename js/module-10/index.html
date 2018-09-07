@@ -8,13 +8,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <div class="container">
-                <form class="search-form">
-                  <input type="text" name="country" placeholder="Enter country name">
-                  <button class="mdc-btn js-submit" type="submit">search</button>
-                </form>
-                <p class="result js-result"></p>
-              </div>
+  <div class="container">
+    <form class="search-form">
+      <div class="input__wrapper">
+      <input type="text" name="name" placeholder="Enter user name">
+      <input type="text" name="id" placeholder="Enter user id">
+      <input type="text" name="age" placeholder="Enter user age">
+    </div>
+      <div class="button__wrapper">
+        <button class="mdc-btn" data-action="get-all-data" type="submit">get all</button>
+        <button class="mdc-btn" data-action="get-id-data" type="submit">get by id</button>
+        <button class="mdc-btn " data-action="post-data" type="submit">post</button>
+        <button class="mdc-btn" data-action="remove-data" type="submit">remove</button>
+        <button class="mdc-btn" data-action="update-data" type="submit">update</button>
+      </div>
+      
+    </form>
+    <p class="result"></p>
+  </div>
     <script src="index.js"></script>
 </body>
 </html>

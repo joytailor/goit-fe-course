@@ -1,64 +1,41 @@
 'use:strict';
 /*
-  Написать функцию fetchCountryData, которая использует
-  apiUrl + текущее значение input для составления запроса.
+  Написать приложение для работы с REST сервисом, 
+  все функции делают запрос и возвращают Promise 
+  с которым потом можно работать. 
   
-  Формат полного url таков:
-    https://restcountries.eu/rest/v2/name/имя-страны
-    
-  С помощью fetch сделать запрос по составленому 
-  адресу. Обязательно обработать вариант с ошибкой запроса
-  используя catch. 
+  Реализовать следующий функционал:
+  - функция getAllUsers() - должна вернуть текущий список всех пользователей в БД.
   
-  Результат запроса вывести в поле result в формате:
-    Country name: имя страны
-    Capital: столица
-    Main currency: название денежной единицы
-    Flag: флаг страны
+  - функция getUserById(id) - должна вернуть пользователя с переданным id.
   
-  Все необходимые данные есть в ответе от API.
+  - функция addUser(name, age) - должна записывать в БД юзера с полями name и age.
   
-  PS: при отправке формы перезагружается страница,
-  решите эту задачу вспомнив о том, как остановить
-  поведение по умолчанию.
+  - функция removeUser(id) - должна удалять из БД юзера по указанному id.
+  
+  - функция updateUser(id, user) - должна обновлять данные пользователя по id. 
+    user это объект с новыми полями name и age.
+  Документацию по бэкенду и пример использования прочитайте 
+  в документации https://github.com/trostinsky/users-api#users-api.
+  Сделать минимальный графический интерфейс в виде панели с полями и кнопками. 
+  А так же панелью для вывода результатов операций с бэкендом.
 */
-const form = document.querySelector(".search-form");
-const input = document.querySelector("input");
-const submitBtn = document.querySelector(".js-submit");
-const result = document.querySelector(".js-result");
-const apiUrl = "https://restcountries.eu/rest/v2/name/";
+const form = document.querySelector("form");
 
-submitBtn.addEventListener("click", handleSubmit);
+const buttons = document.querySelector(".button__wrapper");
 
-/*
-  @param {FormEvent} evt
-*/
+const inputName = document.querySelector("input[name=name]");
 
-function handleSubmit(event){
-    event.preventDefault();
-    fetchCountryData(input.value).then(data =>{
-        createTextContent(data);
-    })
-    form.reset();
-}
+const inputId = document.querySelector("input[name=id]");
 
-function fetchCountryData() {
-    
-  return fetch(`${apiUrl}${input.value}`).then(response => 
-    {if(response.ok) return response.json()
-    throw new Error(`Error while fetching: ${response.statusText}`)
-    })
-    .catch(error =>{
-        console.log(error);
-    })
-    
-}
+const inputAge = document.querySelector("input[name=age]");
 
-function createTextContent(data){
-    
-    console.log(data)
-result.textContent = `Country name: ${data.name}
-Capital: столица
-Main currency: название денежной единицы
-Flag: флаг страны`
-}
+
+buttons.addEventListener('click', handleButtonsClick)
+
+function handleButtonsClick(event) {
+  let nodeName = event.target.nodeName;
+  if(nodeName.textContent === "get all"){
+console.log(' U R COOL');
+  }
+  }
