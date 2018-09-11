@@ -47,81 +47,99 @@
 */
 
 const clockface = document.querySelector(".js-time");
+const lapBtn = document.querySelector('.js-take-lap');
 const startBtn = document.querySelector(".js-start");
 const resetBtn = document.querySelector(".js-reset");
 
 
-const timer = {
-  startTime: null,
-  deltaTime: null,
-  pauseTime: null,
-  id: null,
-  isActive: false,
-  start(){
-      if(this.isActive) return;
-      this.isActive = true;
-   this.startTime = Date.now();
-   this.id = setInterval(() => {
-       const currentTime = Date.now();
-       this.deltaTime = currentTime - this.startTime;
-       updateClockface(clockface, this.deltaTime);
-   }, 100);
-  },
-  reset(){
-   this.deltaTime = 0;
-   updateClockface(clockface, this.deltaTime)
-   startBtn.textContent = 'Start';
-   clearInterval(this.id);
-    this.isActive = false;
-  },
-  pause(){
-      if(timer.isActive){
-        clearInterval(this.id);
-        this.isActive = false;
-      } else{
+const laps = {
+    id: null,
+    startTime: null,
+    isActive: false,
+    deltaTime: 0,
+    laps: [],
+    start(){
+        if(this.isActive) return;
+
+        this.isActive = true;
+        this.startTime = Date.now() - this.deltaTime;
+        console.log(this.startTime),
+
         this.id = setInterval(() => {
             const currentTime = Date.now();
-            this.pauseTime = currentTime - this.startTime - this.deltaTime;
-            updateClockface(clockface, this.pauseTime);
-        }, 100);
-      }
-  },
+            this.deltaTime = currentTime - this.startTime;
+
+            
+            updateClockFace(this.deltaTime);
+        }, 100)
+
+    },
+    stop(){
+        clearInterval(this.id);
+        this.isActive = false;
+    },
+    reset(){
+        clearInterval(this.id);
+        this.deltaTime = 0;
+        updateClockFace(this.deltaTime);
+        this.isActive = false;
+    },
+
+    lap(){
+        const lapTime = formatTime(this.deltaTime);
+        this.laps.push(lapTime);
+        
+        console.log(this.laps);
+        const ul = document.querySelector('.js-laps');
+
+        console.log(this.laps);
+        const li = document.createElement('li');
+        li.textContent = this.laps[this.laps.length -1];
+ 
+    ul.appendChild(li);
+   
+   return ul;
+    },
 };
 
+function updateClockFace (time) {
+    const formattedTime = formatTime(time);
+    clockFace.textContent = formattedTime;
+}
+
+function formatTime (ms){
+    const newDate = new Date(ms);
+
+    let minutes = newDate.getMinutes();
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    let seconds = newDate.getSeconds();
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+
+    const mseconds = String(newDate.getMilliseconds()).slice(0, 1);
+
+    return`${minutes}:${seconds}.${mseconds}`;
+}
+
 startBtn.addEventListener('click', handleStartBtnClick);
-function handleStartBtnClick (evt) {
-    if(timer.isActive){
-        timer.start();
-        startBtn.textContent = 'Pause';
-    }else {
-        timer.pause();
-   startBtn.textContent = 'Continue';
+lapBtn.addEventListener('click', handleLapBtnClick);
+resetBtn.addEventListener('click', handleResetBtnClick);
+
+function handleStartBtnClick(){
+    if(!laps.isActive){
+        laps.start();
+        this.textContent = 'Pause';
+    } else{
+        laps.stop();
+        this.textContent = 'Continue';
+    };
 }
+function handleResetBtnClick(){
+    laps.reset();
+    startBtn.textContent = 'Start';
 }
 
-resetBtn.addEventListener('click', timer.reset.bind(timer));
-
-/*
-* Вспомогательные функции
-*/
-function getFormattedTime(time) {
-
-    let date = new Date(time);
-    let minutes = date.getMinutes();
-    minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
-    let seconds = date.getSeconds();
-    seconds = seconds < 10 ? `0${seconds}` : `${seconds}`
-    let mseconds = String(date.getMilliseconds()).slice(0,1);
-
-
-    return `${minutes}:${seconds}:${mseconds}` ;
-  }
-/*
-* Обновляет поле счетчика новым значением при вызове
-* аргумент time это кол-во миллисекунд
-*/
-function updateClockface(elem, time) {
- elem.textContent = getFormattedTime(time);
-  // Используйте функцию getFormattedTime из задания #1
-  // elem.textContent = getFormattedTime(time);
+function handleLapBtnClick(){
+   laps.lap();
 }
