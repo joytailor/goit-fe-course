@@ -5,12 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <button class="btn js-sub">-1</button>
-        <span class="value js-value">0</span>
-        <button class="btn js-add">+1</button>        
+  <form class="form js-form">
+    <section>
+      <h2>Screen size</h2>
+      <ul>
+        <li><label><input class="size" type="checkbox" name="size" value="13"> 13"</label></li>
+        <li><label><input class="size" type="checkbox" name="size" value="15"> 15"</label></li>
+        <li><label><input class="size" type="checkbox" name="size" value="17"> 17"</label></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Color</h2>
+      <ul>
+        <li><label><input class="color" type="checkbox" name="color" value="white"> white</label></li>
+        <li><label><input class="color" type="checkbox" name="color" value="gray"> gray</label></li>
+        <li><label><input class="color" type="checkbox" name="color" value="black"> black</label></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Release date</h2>
+      <ul>
+        <li><label><input class="release_date" type="checkbox" name="release_date" value="2015"> 2015</label></li>
+        <li><label><input class="release_date" type="checkbox" name="release_date" value="2016"> 2016</label></li>
+        <li><label><input class="release_date" type="checkbox" name="release_date" value="2017"> 2017</label></li>
+      </ul>
+    </section>
+    <button type="submit">Filter</button>
+    <button type="reset">Clear</button>
+  </form>
+  <div class="js_info">
+    <template id="js_markup">
+        <!-- name, img, descr, color, price, release_date. -->
+      {{#each this}}
+      <span class="name">{{name}}</span><br>
+      <img src={{img}} alt="" class="img"><br>
+      <span class="descr">{{descr}}</span><br>
+      <span class="color">{{color}}</span><br>
+      <span class="price">{{price}}</span><br>
+      <span class="release_date">{{release_date}}</span>
+            {{/each}}
+    </template>
+  </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
