@@ -117,23 +117,50 @@ const laptops = [
   },
 ]
 
- const form = document.querySelector('.js-form');
- const checkBoxesSize = document.querySelectorAll('.size');
- const checkBoxesColor = document.querySelectorAll('.color');
- const checkBoxesReleaseDate = document.querySelectorAll('.release_date');
- const submitBtn = document.querySelector('button[type=submit]');
- const resetBtn = document.querySelector('button[type=reset]');
- const parent = document.querySelector('.js_info');
+const form = document.querySelector('.js-form');
+const checkBoxesSize = document.querySelectorAll('.size');
+const checkBoxesColor = document.querySelectorAll('.color');
+const checkBoxesReleaseDate = document.querySelectorAll('.release_date');
+const submitBtn = document.querySelector('button[type=submit]');
+const resetBtn = document.querySelector('button[type=reset]');
 
-submitBtn.addEventListener('click', handleSubmitBtnClick);
-resetBtn.addEventListener('click', handleResetBtnClick);
+ 
+ const root = document.querySelector('.js_info').innerHTML.trim();
+ const source = document.querySelector("#js_markup").innerHTML.trim();
+ const template = Handlebars.compile(source);
+
 
 function handleResetBtnClick(event){
-  event.preventDefault();
-  parent.innerHTML = "";
-  form.reset();
+ event.preventDefault();
+ parent.innerHTML = "";
+ form.reset();
 }
 
+function createMarkup(arr){
+ 
+ const markup = arr.reduce((acc, laptop) => acc + template(laptop), "");
+ root.insertAdjacentHTML("afterbegin", markup);
+}
+
+function filterInfo(obj){
+console.log('obj', obj)
+const sizePattern = obj.size;
+const colorPattern = obj.color;
+const releaseDatePattern = obj.release_date;
+const filteredArray =  laptops.filter(el=> sizePattern.length !== 0 ? sizePattern.includes(el.size) : true 
+              && colorPattern.length !== 0 ? colorPattern.includes(el.color) : true 
+              && releaseDatePattern.length !== 0 ? releaseDatePattern.includes(el.release_date) : true)
+createMarkup(filteredArray);
+}
+
+function getCheckedInfo(size, color, release_date){
+ let filterValue = {
+   size : size,
+   color: color,
+   release_date: release_date,
+ }
+ filterInfo(filterValue);
+}
 function handleSubmitBtnClick(event) {
   event.preventDefault();
   parent.innerHTML = "";
@@ -158,30 +185,4 @@ function handleSubmitBtnClick(event) {
     console.log(size, color, release_date);
     getCheckedInfo(size, color, release_date);
     form.reset();
-  }; 
-
-function getCheckedInfo(size, color, release_date){
-  let filterValue = {
-    size : size,
-    color: color,
-    release_date: release_date,
-  }
-  filterInfo(filterValue);
-}
-
-function filterInfo(obj){
-const filteredArray = [];
-const sizePattern = /obj.size/;
-const colorPattern = /obj.color/;
-const releaseDatePattern = /obj.release_date/;
-laptops.forEach(el=>{if(el.size.match(sizePattern) && el.color.match(colorPattern) && el.release_data.match(releaseDatePattern)) filteredArray.push(el);})
-createMarkup(filteredArray);
-}
-
-function createMarkup(arr){
-  const source = document.querySelector('#js_markup').innerHTML.trim();
-  const template = Handlebars.compile(source);
-  const markup = template(arr);
-  parent.insertAdjacentHTML('afterbegin', markup);
-  return parent;
-}
+  };
