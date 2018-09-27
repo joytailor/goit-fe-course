@@ -135,7 +135,13 @@ gulp.task('build', cb =>
 );
 
 gulp.task('start', cb => sequence('build', 'serve', 'watch'));
-  
-gulp.task('ts', function(){gulp.src('src')
-.pipe(aGulpPlugin())
-.pipe(gulp.dest(build.js));})
+
+gulp.task('ts', function(){gulp.src('src/js/ts*.ts')
+.pipe(concat('ts-bundle.ts'))
+.pipe(gulp.dest('build'));})
+
+gulp.task('watch', function(){
+  gulp.watch('src/js/ts*.ts', ['ts'])
+})
+
+gulp.build('build', ['watch']);

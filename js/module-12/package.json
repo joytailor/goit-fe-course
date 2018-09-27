@@ -8,7 +8,8 @@
     "start": "gulp start",
     "build": "gulp build",
     "svg-sprite": "gulp svg-sprite",
-    "images": "gulp images"
+    "images": "gulp images",
+    "ts": "gulp ts"
   },
   "repository": {
     "type": "git",
