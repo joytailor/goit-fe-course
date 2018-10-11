@@ -142,6 +142,7 @@ gulp.task('ts', function(){gulp.src('src/js/ts*.ts')
 
 gulp.task('watch', function(){
   gulp.watch('src/js/ts*.ts', ['ts'])
+  gulp.watch('src/**/*.js', ['scripts'])
 })
 
 gulp.build('build', ['watch']);
