@@ -10,7 +10,17 @@ module.exports = {
         publicPath: '/joytailor/goit-fe-course/tree/master/js/module-13/build'
     },
     module: {
-   rules: [{
+   rules: [ {
+    test: /\.m?js$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env']
+      }
+    }
+  },
+       {
        test: /\.css$/,
        exclude: /node-modules/,
        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],

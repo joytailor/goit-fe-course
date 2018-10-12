@@ -27,11 +27,14 @@
   </form>
   <ul class="bookmarks-list">
       <template id="js_markup">
+          {{#each this}}
         <li class="list-item">{{item}}
           <button class="del-btn">Удалить</button>
         </li>
+        {{/each}}
       </template>
   </ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 <script src="index.js"></script>
 </body>
 
