@@ -37,15 +37,17 @@
   </form>
   <div class="js_info">
     <template id="js_markup">
-        <!-- name, img, descr, color, price, release_date. -->
-      {{#each this}}
-      <span class="name">{{name}}</span><br>
-      <img src={{img}} alt="" class="img"><br>
-      <span class="descr">{{descr}}</span><br>
-      <span class="color">{{color}}</span><br>
-      <span class="price">{{price}}</span><br>
-      <span class="release_date">{{release_date}}</span>
-            {{/each}}
+      <article class="cart">
+        <h3 class="cart__title">{{name}}</h3>
+        <div class="cart__img-wrap"><img src="{{img}}" alt='Macbook Air White 13"' class="cart__img-img"></div>
+        <p class="cart__descr">{{descr}}</p>
+        <div class="cart_options">
+          <div class="cart__color" style="background-color: {{color}}">{{color}}</div>
+          <div class="cart__size">size: {{size}}"</div>
+          <div class="cart__release">release: {{release_date}}</div>
+        </div>
+        <div class="cart__price">{{price}} ₴</div>
+      </article>
     </template>
   </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>

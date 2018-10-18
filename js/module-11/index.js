@@ -124,7 +124,7 @@ const checkBoxesReleaseDate = document.querySelectorAll('.release_date');
 const submitBtn = document.querySelector('button[type=submit]');
 const resetBtn = document.querySelector('button[type=reset]');
 
- 
+const rootWrapper = document.querySelector('.js_info');
  const root = document.querySelector('.js_info').innerHTML.trim();
  const source = document.querySelector("#js_markup").innerHTML.trim();
  const template = Handlebars.compile(source);
@@ -139,7 +139,7 @@ function handleResetBtnClick(event){
 function createMarkup(arr){
  
  const markup = arr.reduce((acc, laptop) => acc + template(laptop), "");
- root.insertAdjacentHTML("afterbegin", markup);
+ rootWrapper.insertAdjacentHTML("afterbegin", markup);
 }
 
 function filterInfo(obj){
@@ -147,9 +147,12 @@ console.log('obj', obj)
 const sizePattern = obj.size;
 const colorPattern = obj.color;
 const releaseDatePattern = obj.release_date;
-const filteredArray =  laptops.filter(el=> sizePattern.length !== 0 ? sizePattern.includes(el.size) : true 
+const filteredArray =  laptops.filter(el => {
+  return sizePattern.length !== 0 ? sizePattern.includes(String(el.size)) : true
               && colorPattern.length !== 0 ? colorPattern.includes(el.color) : true 
-              && releaseDatePattern.length !== 0 ? releaseDatePattern.includes(el.release_date) : true)
+              && releaseDatePattern.length !== 0 ? releaseDatePattern.includes(String(el.release_date)) : true
+});
+  console.log('filteredArray', filteredArray);
 createMarkup(filteredArray);
 }
 
@@ -186,3 +189,5 @@ function handleSubmitBtnClick(event) {
     getCheckedInfo(size, color, release_date);
     form.reset();
   };
+
+  submitBtn.addEventListener('click', handleSubmitBtnClick);
