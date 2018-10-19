@@ -133,16 +133,3 @@ gulp.task('build', cb =>
     cb,
   ),
 );
-
-gulp.task('start', cb => sequence('build', 'serve', 'watch'));
-
-gulp.task('ts', function(){gulp.src('src/js/ts*.ts')
-.pipe(concat('ts-bundle.ts'))
-.pipe(gulp.dest('build'));})
-
-gulp.task('watch', function(){
-  gulp.watch('src/js/ts*.ts', ['ts'])
-  gulp.watch('src/**/*.js', ['scripts'])
-})
-
-gulp.build('build', ['watch']);
