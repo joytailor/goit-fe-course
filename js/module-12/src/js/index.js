@@ -39,10 +39,10 @@ function handlerAddNote(evt) {
   const request = input.value;
   links.includes(request) ? alert('Такой адрес существует!') :
   checkURL(request) ? links.push(request) : false;
+  checkURL(request) ? createList([request]) : false;
   form.reset();
   localStorage.links = JSON.stringify(links);
   console.log(links);
-  createList([request]);
 }
 
 
@@ -51,9 +51,16 @@ listWrapper.addEventListener('click', deleteItem);
 function deleteItem(event) {
   let nodeName = event.target.nodeName;
   let parent = event.target.parentNode;
+  let link = event.target.previousSibling.href;
+  let indexOfLink = links.indexOf(link);
   if (nodeName = 'BUTTON') {
     parent.remove();
   }
+  localStorage.removeItem(links.splice(indexOfLink, 1));
+  console.log(links);
+  console.log(link);
+  console.log(indexOfLink);
+  localStorage.links = JSON.stringify(links);
 }
 
 
