@@ -7,26 +7,24 @@ export default class View {
         this.refs.form = document.querySelector('.js-form');
         this.refs.input = document.querySelector('.js-input');
         this.refs.btn = document.querySelector('.js-btn');
-        this.refs.list = document.querySelector('.bookmarks-list');
-    }
-    initItems(items){
-    const markup = items.reduce((string,item)=>{
-        return string + this.createMarkup(item), '';
-    })
-     this.refs.list.insertAdjacentHTML('afterbegin', markup);
+        this.refs.listWrapper = document.querySelector('.bookmarks-list');
+        this.refs.source = document.querySelector('#js_markup').innerHTML.trim();
+        this.refs.template = Handlebars.compile(source);
+
     }
 
-    addItem(item){
-    const markup = this.createMarkup(item);
-    this.refs.list.insertAdjacentHTML('afterbegin', markup);
-    }
+    createList(items) {
 
-    createMarkup(item){
-        return `
-        <li class="list-item">${item}
-          <button class="del-btn">Удалить</button>
-        </li>`
-    }
-
-     
+        const markup = items.reduce( (acc, el) => acc + template( {
+          name: 'Site:' + el,
+          url: el,
+          descr: 'descr',
+          img: '...'
+        }), "" );
+        this.refs.listWrapper.insertAdjacentHTML(
+          "afterbegin",
+          markup
+        );
+        console.log('CreateList');
+      }
 }

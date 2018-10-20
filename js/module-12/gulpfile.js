@@ -52,19 +52,20 @@ gulp.task('styles', () =>
 );
 
 gulp.task('scripts', () =>
-  gulp
-    .src('./src/js/**/*.js')
-    .pipe(plumber())
-    .pipe(
-      babel({
-        presets: ['env'],
-      }),
-    )
-    .pipe(concat('scripts.js'))
-    .pipe(gulp.dest('./build/js'))
-    .pipe(uglify())
-    .pipe(rename('scripts.min.js'))
-    .pipe(gulp.dest('./build/js')),
+    gulp
+      .src('./src/**/*.js')
+      .pipe(plumber())
+      .pipe(
+        babel({
+          presets: ['env'],
+        }),
+      )
+      .pipe(concat('scripts.js'))
+      .pipe(gulp.dest('./build/js'))
+      .pipe(uglify())
+      .pipe(rename('scripts.min.js'))
+      .pipe(gulp.dest('./build/js')),
+
 );
 
 gulp.task('svg-sprite', () =>
@@ -127,6 +128,27 @@ gulp.task('build', cb =>
     'svg-sprite',
     'images',
     'fonts',
+    'styles',
+    'html',
+    'scripts',
+    cb,
+  ),
+);
+
+gulp.task('start', cb => sequence('build', 'serve', 'watch'));
+
+gulp.task('ts', function(){gulp.src('src/js/ts*.ts')
+.pipe(concat('ts-bundle.ts'))
+.pipe(gulp.dest('build'));})
+
+gulp.task('watch', function(){
+  gulp.watch('src/js/ts*.ts', ['ts'])
+  gulp.watch('src/**/*.js', ['scripts'])
+})
+
+gulp.task('build', cb =>
+  sequence(
+    'del:build',
     'styles',
     'html',
     'scripts',

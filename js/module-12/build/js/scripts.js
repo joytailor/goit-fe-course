@@ -7,29 +7,30 @@ var listWrapper = document.querySelector('.bookmarks-list');
 var source = document.querySelector('#js_markup').innerHTML.trim();
 var template = Handlebars.compile(source);
 
-function createList(items) {
-
-  var markup = items.reduce(function (acc, el) {
-    return acc + template({
-      name: 'Site:' + el,
-      url: el,
-      descr: 'descr'
-    });
-  }, "");
-  listWrapper.insertAdjacentHTML("afterbegin", markup);
-  console.log('CreateList');
-}
+var links = void 0;
+window.onload = function () {
+  links = localStorage.getItem('links') ? JSON.parse(localStorage.getItem('links')) : [];
+  createList(links);
+};
 
 function checkURL(url) {
   var regURL = /^(?:(?:https?|ftp|telnet):\/\/(?:[a-z0-9_-]{1,32}(?::[a-z0-9_-]{1,32})?@)?)?(?:(?:[a-z0-9-]{1,128}\.)+(?:com|net|org|mil|edu|arpa|ru|gov|biz|info|aero|inc|name|[a-z]{2})|(?!0)(?:(?!0[^.]|255)[0-9]{1,3}\.){3}(?!0|255)[0-9]{1,3})(?:\/[a-z0-9.,_@%&?+=\~\/-]*)?(?:#[^ \'\"&<>]*)?$/i;
   return regURL.test(url);
 }
 
-var links = void 0;
-window.onload = function () {
-  links = localStorage.getItem('links') ? JSON.parse(localStorage.getItem('links')) : [];
-  createList(links);
-};
+function createList(items) {
+
+  var markup = items.reduce(function (acc, el) {
+    return acc + template({
+      name: 'Site:' + el,
+      url: el,
+      descr: 'descr',
+      img: '...'
+    });
+  }, "");
+  listWrapper.insertAdjacentHTML("afterbegin", markup);
+  console.log('CreateList');
+}
 
 function handlerAddNote(evt) {
   evt.preventDefault();
@@ -39,8 +40,10 @@ function handlerAddNote(evt) {
   form.reset();
   localStorage.links = JSON.stringify(links);
   console.log(links);
-  createList(request);
+  createList([request]);
 }
+
+listWrapper.addEventListener('click', deleteItem);
 
 function deleteItem(event) {
   var nodeName = event.target.nodeName;
@@ -50,5 +53,4 @@ function deleteItem(event) {
   }
 }
 
-listWrapper.addEventListener('click', deleteItem);
 btn.addEventListener('click', handlerAddNote);

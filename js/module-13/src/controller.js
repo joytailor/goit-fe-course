@@ -4,19 +4,24 @@ export default class Controller  {
     constructor(view, model){
         this._view = view;
         this._model = model;
-        this._view.refs.list.addEventListener('click', this.deleteItem.bind(this));
+        this._view.refs.listWrapper.addEventListener('click', this.deleteItem.bind(this));
         this._view.refs.btn.addEventListener('click', this.handleAddNote.bind(this));
         document.addEventListener('DOMContentLoaded', this.handleAddList.bind(this));
         
     }
-   handleAddNote(e){
-       e.preventDefault();
-       const text = this._view.refs.input.value;
-       model.setItem(text).then(text => view.addItem(text));
-   }
+    handleAddNote(evt) {
+        evt.preventDefault();
+        let target = evt.target;
+        this._model.addItem(this._view.links, this._view.refs.input.value);
+        form.reset();
+        console.log(links);
+    this._view.createList([request]);
+      }
    handleAddList(e){
-    e.preventDefault();
-     model.getItems().then(lists => view.initItems(lists));
+    window.onload = function () {
+       this_model.getItems();
+       this_view.createList(links);
+      }
    }
    deleteItem(e){
         let nodeName = event.target.nodeName;
