@@ -9,13 +9,13 @@ export default class View {
         this.refs.btn = document.querySelector('.js-btn');
         this.refs.listWrapper = document.querySelector('.bookmarks-list');
         this.refs.source = document.querySelector('#js_markup').innerHTML.trim();
-        this.refs.template = Handlebars.compile(source);
+        this.refs.template = Handlebars.compile(this.refs.source);
 
     }
 
     createList(items) {
 
-        const markup = items.reduce( (acc, el) => acc + template( {
+        const markup = items.reduce( (acc, el) => acc + this.refs.template( {
           name: 'Site:' + el,
           url: el,
           descr: 'descr',

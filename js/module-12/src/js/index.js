@@ -5,7 +5,7 @@ const listWrapper = document.querySelector('.bookmarks-list');
 const source = document.querySelector('#js_markup').innerHTML.trim();
 const template = Handlebars.compile(source);
 
-let links;
+let links = [];
 window.onload = function () {
   links = localStorage.getItem('links') ? JSON.parse(localStorage.getItem('links')) : [];
   createList(links);
@@ -37,9 +37,14 @@ function handlerAddNote(evt) {
   evt.preventDefault();
   let target = evt.target;
   const request = input.value;
+  console.log(request);
+  console.log(links);
+  const result = links.includes(request);
+  console.log(result);
+  if(result === false){checkURL(request) ? createList([request]) : false;}
   links.includes(request) ? alert('Такой адрес существует!') :
   checkURL(request) ? links.push(request) : false;
-  checkURL(request) ? createList([request]) : false;
+ 
   form.reset();
   localStorage.links = JSON.stringify(links);
   console.log(links);
